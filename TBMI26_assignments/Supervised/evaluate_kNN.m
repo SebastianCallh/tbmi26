@@ -7,7 +7,7 @@
 % 3 = dot cloud 3
 % 4 = OCR data
 
-dataSetNr = 1; % Change this to load new data 
+dataSetNr = 4; % Change this to load new data 
 
 [X, D, L] = loadDataSet( dataSetNr );
 
@@ -28,19 +28,25 @@ selectAtRandom = true; % true = select features at random, false = select the fi
 %% Use kNN to classify data
 % Note: you have to modify the kNN() function yourselfs.
 
-% Set the number of neighbors
-k = 1;
+% Data 1: K = 3
+% Data 2: K = 1
+% Data 3: K = 2
+% Data 4: K = 2 (Tracy plot)
 
-LkNN = kNN(Xt{2}, k, Xt{1}, Lt{1});
+% Set the number of neighbors
+perfs = kNN_cv(Xt{1}, Dt{1}, Lt{1});
+
+[~, k] = max(perfs);
+LkNN = kNN(Xt{2}, 1, Xt{1}, Lt{1});
 
 %% Calculate The Confusion Matrix and the Accuracy
 % Note: you have to modify the calcConfusionMatrix() function yourselfs.
 
 % The confucionMatrix
-cM = calcConfusionMatrix( LkNN, Lt{2})
+cM = calcConfusionMatrix( LkNN, Lt{2});
 
 % The accuracy
-acc = calcAccuracy(cM)
+acc = calcAccuracy(cM);
 
 %% Plot classifications
 % Note: You do not need to change this code.
