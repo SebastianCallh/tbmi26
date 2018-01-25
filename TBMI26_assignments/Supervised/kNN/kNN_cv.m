@@ -16,7 +16,7 @@ selectAtRandom = true; % true = select features at random, false = select the fi
 
 [ Xt, ~, Lt ] = selectTrainingSamples(X, D, L, numSamplesPerLabelPerBin, numBins, selectAtRandom );
 
-ks = 10;
+ks = 25;
 perfs = zeros(ks, 1);
 for k = 1:ks 
     
