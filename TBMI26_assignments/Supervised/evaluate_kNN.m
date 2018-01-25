@@ -5,9 +5,9 @@
 % 1 = dot cloud 1
 % 2 = dot cloud 2
 % 3 = dot cloud 3
-% 4 = OCR data
+% 4 = OCR data k = 4
 
-dataSetNr = 4; % Change this to load new data 
+dataSetNr = 2; % Change this to load new data 
 
 [X, D, L] = loadDataSet( dataSetNr );
 
@@ -17,7 +17,7 @@ dataSetNr = 4; % Change this to load new data
 %% Select a subset of the training features
 
 numBins = 2; % Number of Bins you want to devide your data into
-numSamplesPerLabelPerBin = 100; % Number of samples per label per bin, set to inf for max number (total number is numLabels*numSamplesPerBin)
+numSamplesPerLabelPerBin = inf; % Number of samples per label per bin, set to inf for max number (total number is numLabels*numSamplesPerBin)
 selectAtRandom = true; % true = select features at random, false = select the first features
 
 [ Xt, Dt, Lt ] = selectTrainingSamples(X, D, L, numSamplesPerLabelPerBin, numBins, selectAtRandom );

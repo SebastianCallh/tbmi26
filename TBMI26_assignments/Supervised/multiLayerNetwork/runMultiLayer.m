@@ -1,4 +1,4 @@
-function [ Y, U, L ] = runMultiLayer( X, W, V )
+function [ Y, L, U] = runMultiLayer( X, W, V )
 %RUNMULTILAYER Calculates output and labels of the net
 %   Inputs:
 %               X  - Features to be classified (matrix)

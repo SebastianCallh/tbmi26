@@ -28,7 +28,6 @@ testError(1) = sum(sum((Ytest - Dtest).^2))/Ntest;
 
 for n = 1:numIterations
     Y = Wout*Xt;
-    
     grad_w = 2/Nt*(Y-Dt)*Xt';
     
     Wout = Wout - learningRate*grad_w;
