@@ -9,7 +9,7 @@
 % 3 = dot cloud 3 89%
 % 4 = OCR data Cannot handle at all
 
-dataSetNr = 2; % Change this to load new data 
+dataSetNr = 4; % Change this to load new data 
 
 [X, D, L] = loadDataSet( dataSetNr );
 

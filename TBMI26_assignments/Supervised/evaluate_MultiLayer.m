@@ -7,7 +7,7 @@
 % 3 = dot cloud 3 99.3% 5000 iter lr 0.01
 % 4 = OCR data
 
-dataSetNr = 4; % Change this to load new data 
+dataSetNr = 3; % Change this to load new data 
 
 [X, D, L] = loadDataSet( dataSetNr );
 
@@ -21,6 +21,11 @@ selectAtRandom = true; % true = select features at random, false = select the fi
 
 % Note: Xt, Dt, Lt will be cell arrays, to extract a bin from them use i.e.
 % XBin1 = Xt{1};
+%% Fuck up the training data
+seed = floor(min(999,max(1,600 + 100.*randn(1,100))));
+Xt{1} = Xt{1}(:,seed);
+Lt{1} = Lt{1}(seed);
+Dt{1} = Dt{1}(:,seed);
 %% Modify the X Matrices so that a bias is added
 
 % The Training Data
@@ -32,8 +37,8 @@ Xtest = [ones(1, size(Xt{2}, 2)); Xt{2}];
 %% Train your single layer network
 % Note: You nned to modify trainSingleLayer() in order to train the network
 
-numHidden = 64; % Change this, Number of hidde neurons 
-numIterations = 10000; % Change this, Numner of iterations (Epochs)
+numHidden = 30; % Change this, Number of hidde neurons 
+numIterations = 20000; % Change this, Numner of iterations (Epochs)
 learningRate = 0.005; % Change this, Your learningrate
 W0 = randn(numHidden, size(Xtraining, 1))/1000; % Change this, Initiate your weight matrix W
 V0 = randn(size(Dt{1}, 1), numHidden + 1)/1000; % Change this, Initiate your weight matrix V
