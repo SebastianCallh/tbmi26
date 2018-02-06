@@ -9,6 +9,6 @@ function C = WeakClassifier(T, P, X)
 % This is for your own benefit, since a loop will be too slow to use
 % with a reasonable amount of Haar features and training images.
     C = ones(size(X));
-    C(P.*C > P.*T) = -1;
+    C(P.*X < P.*T) = -1;
  end
 
