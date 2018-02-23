@@ -2,8 +2,8 @@
 
 
 level = 4;                     % Values 1,2,3,4 for different levels
-nEpisodes = 10000;             % Amount of episodes
-gamma = 0.9;%0.3;                   % Discount factor
+nEpisodes = 4000;             % Amount of episodes
+gamma = 0.999;%0.3;                   % Discount factor
 initAlpha = 0.2;%0.9;               % Confidence
 initEpsilon = 0.8;%0.9;             % Prob. of random
 actions = [1, 2, 3, 4];        % All actions
@@ -31,7 +31,8 @@ for n = 1:nEpisodes
         
     gwinit(level);
     state = gwstate();
-    epsilon = initEpsilon*(exp(-n/(nEpisodes*1)));
+    epsilon = initEpsilon*(exp(-n/(nEpisodes*0.5)));
+    alpha = initAlpha;
     %alpha   = initAlpha*(exp(-n/(nEpisodes*0.5)));
     while ~state.isterminal
         x = state.pos(1);
